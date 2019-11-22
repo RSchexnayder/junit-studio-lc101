@@ -22,14 +22,21 @@ public class BalancedBrackets {
      * @return true if balanced, false otherwise
      */
     public static boolean hasBalancedBrackets(String str) {
-        int brackets = 0;
+        Boolean balanced = true;
         for (char ch : str.toCharArray()) {
             if (ch == '[') {
-                brackets++;
+                balanced = false;
             } else if (ch == ']') {
-                brackets--;
+                if (!balanced) {
+                    balanced = true;
+                }
             }
         }
-        return brackets == 0;
+
+        if (balanced && str.contains("[")){
+            return true;
+        } else {
+            return false;
+        }
     }
 }
